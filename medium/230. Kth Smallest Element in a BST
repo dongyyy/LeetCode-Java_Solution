@@ -1,0 +1,69 @@
+// 이진트리의 특성상, inorder 순회하면 오름차순 정렬이 됨
+// 오름 차순 정렬 후, idx가 k인 수를 return
+
+1.faster than 13%
+class Solution {
+		List<Integer> list = new ArrayList<>();
+	    public int kthSmallest(TreeNode root, int k) {
+	    	traversal(root);
+			return list.get(k-1);
+	    }
+	    
+	    public void traversal(TreeNode self) {
+	    	if(self == null) return;
+	    	traversal(self.left);
+	    	list.add(self.val);
+	    	traversal(self.right);
+	    }
+	}
+
+
+
+
+2.faster than 49%
+class Solution {
+		List<Integer> list = new LinkedList<>();
+	    public int kthSmallest(TreeNode root, int k) {
+	    	traversal(root);
+			return list.get(k-1);
+	    }
+	    
+	    public void traversal(TreeNode self) {
+	    	if(self == null) return;
+	    	traversal(self.left);
+	    	list.add(self.val);
+	    	traversal(self.right);
+	    }
+	}
+
+
+
+
+//배열(공간)을 사용하지 않고 count를 써서
+//k번째 수를 탐색
+
+3. 100%
+class Solution {
+		int cnt = 0;
+		int rst = 0;
+		
+	    public int kthSmallest(TreeNode root, int k) {
+	    	traversal(root, k);
+			return rst;
+	    }
+	    
+	    public void traversal(TreeNode self, int k) {
+	    	if(self == null) return;
+	    	
+	    	traversal(self.left, k);
+	    	
+	    	cnt ++;
+	    	if(cnt == k) {
+	    		rst = self.val;
+	    		return;
+	    	}
+	    	
+	    	traversal(self.right, k);
+	    	
+	    }
+	}
