@@ -1,0 +1,30 @@
+class Solution {
+    public List<String> letterCasePermutation(String S) {
+          char[] word = S.toCharArray();
+		  List<String> ret = new LinkedList<>();	
+		  backtracking(word, ret, 0);
+		  return ret;
+    }
+    
+    public void backtracking(char[] arr, List<String> ret, int idx) {
+		if(idx == arr.length) {
+			ret.add(new String(arr));
+		}else {
+			char c = arr[idx];
+			if(isAlpha(c)) {
+				arr[idx] = Character.toLowerCase(c);
+				backtracking(arr, ret, idx + 1);
+				arr[idx] = Character.toUpperCase(c);
+				backtracking(arr, ret, idx + 1);
+			}else {
+				backtracking(arr, ret, idx+1);
+			}
+		}
+			
+		
+	}
+	
+	public boolean isAlpha(char c) {
+		return  (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
+	}
+}
