@@ -1,0 +1,28 @@
+   
+    //walker : 1번에 한칸씩
+	  //runner : 한번에 두칸씩 전
+	  
+	  //사이클이 있으면 둘은 언젠가 만남
+	  //사이클이 없으면 러너가 먼저 null에 닿음
+	  
+	  //시간복잡도 O(n)
+	  //공간복잡도 O(1)
+	 
+	public class Solution {
+	    public boolean hasCycle(ListNode head) {
+	    	ListNode runner = head;
+	    	ListNode walker = head;
+	    	
+	    	while(runner != null){
+	    		runner = runner.next;
+	    		if(runner != null){
+	    			runner = runner.next;
+	    			walker = walker.next;
+	    		}
+	    		
+	    		if(runner == walker) return true;
+	    	}
+	    	
+	    	return false;
+	    }
+	}
