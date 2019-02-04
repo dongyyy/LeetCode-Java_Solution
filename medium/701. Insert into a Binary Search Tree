@@ -1,0 +1,51 @@
+
+// 1st attempt
+
+class Solution {
+	    public TreeNode insertIntoBST(TreeNode root, int val) {
+	    	TreeNode cur = root;
+	    	traversal(cur, val);
+	    	return root;
+	    }
+    
+    	public void traversal(TreeNode cur, int val){
+		if(cur == null)  new TreeNode(val);
+		
+		else if(cur.val > val){
+			if(cur.left == null){
+				 cur.left = new TreeNode(val);
+				 return;
+			}else{
+				traversal(cur.left, val);
+			}
+		}else if(cur.val < val){
+			if(cur.right == null){
+				 cur.right = new TreeNode(val);
+				 return;
+			}else{
+				traversal(cur.right, val);
+			}
+			
+		}
+	}
+ }
+	
+  
+  //2nd attempt
+
+class Solution {
+	    public TreeNode insertIntoBST(TreeNode root, int val) {
+	    	if(root == null) return new TreeNode(val);
+	    	
+	    	TreeNode child;
+	    	if(val < root.val){
+	    		child = insertIntoBST(root.left,val);	
+	    		root.left = child;
+	    	}else{
+	    		child = insertIntoBST(root.right,val);
+	    		root.right = child;
+	    	}
+	    	
+	    	return root;
+	    }
+	}
