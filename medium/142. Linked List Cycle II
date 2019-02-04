@@ -1,0 +1,49 @@
+//	  
+//	  walker : 한번에 한칸씩 
+//	  runner : 한번에 두칸씩 전진 
+//	  
+//	  XXXXX
+//	    X X
+//	    XXX
+//	  
+//	  A : 시작 노드부터 루프의 처음 노드까지 길이(2) 
+//	  B : 루프 전체의 길이(8)
+//	  X : 루프의 처음노드부터 현재 노드까지의 길
+//	  
+//	  만날때까지 간 거리
+//	  walker : A + X
+//	  runner : A + n*B + X
+//	  
+//	  2*walker = runner
+//	  2A + 2X = A + n*B + X
+//	  A + X = n*B
+//	  
+//	  X지점과 시작노드부터 두 워커를 전진시키면
+//	  루프의 처음노드에서 만나게 됨
+//	  
+	  
+	public class Solution {
+	    public ListNode detectCycle(ListNode head) {
+	    	ListNode runner = head;
+	    	ListNode walker = head;
+	    	ListNode walker2 = head;
+	    	
+	    	while(runner != null){
+	    		runner = runner.next;
+	    		if(runner != null){
+	    			runner = runner.next;
+	    			walker = walker.next;
+	    		}
+	    		
+	    		if(runner == walker){
+	    			while(walker != walker2){
+	    				walker = walker.next;
+	    				walker2 = walker2.next;
+	    			}
+	    			return walker;
+	    		}
+	    	}
+	    	
+	    	return null;
+	    }
+	}
