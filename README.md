@@ -1,4 +1,4 @@
-# LeetCode-Java_Solution
+# LeetCode - Java_Solution
 
 Repository to store solutions to various problems in Leetcode practice and weekly contests
 
