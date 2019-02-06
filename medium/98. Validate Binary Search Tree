@@ -1,0 +1,35 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+ 
+ 	// 자식입장으로 문제를 풀 떄,  
+	// 부모 노드의 val을 알아야한다.
+	// 내가 왼쪽 노드인지 오른쪽 노드인지 알아야한다.
+	  
+	// 부모 입장으로 문제를 풀 때,
+	// 굳
+ 
+class Solution {
+    public boolean isValidBST(TreeNode root) { 
+	    	return isValidBST(root, false, false,  0, 0);
+	    }
+	    
+      //주어진 함수 isValidBST의 시그니처보다 파라미터가 더 필요해서 Overloading 
+	    public boolean isValidBST(TreeNode root, boolean lowerBoundExist, boolean upperBoundExist, int lowerBound, int upperBound) {
+	    	//Base case
+	    	if( root == null) return true;
+	    	  //lower, upper bound를 침범하는가 여부 확인하여 return false
+	      if(lowerBoundExist && root.val <= lowerBound) return false;
+	    	if(upperBoundExist && root.val >= upperBound) return false;
+	    	
+	    	//reculsive case
+	    	return isValidBST(root.left, lowerBoundExist, true, lowerBound, root.val) 
+	    			&& isValidBST(root.right, true, upperBoundExist, root.val, upperBound);
+	    }
+}
