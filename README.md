@@ -7,6 +7,6 @@
 Resources<br>
  [My Leetcode Profile](https://leetcode.com/dongyeongkim/)<br>
  [승지니어 Sengineer YouTube Channel](https://www.youtube.com/channel/UCW4ixpFivk6eJl8b5bFOLkg/featured)<br>
- [권오흠 교수님 YouTube Channel](https://www.youtube.com/channel/UC-cOmaeWLm7Ii7erMQNatvA)<br>
+ [권오흠 교수 YouTube Channel](https://www.youtube.com/channel/UC-cOmaeWLm7Ii7erMQNatvA)<br>
  
 
