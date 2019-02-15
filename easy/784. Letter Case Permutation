@@ -1,9 +1,9 @@
 class Solution {
     public List<String> letterCasePermutation(String S) {
           char[] word = S.toCharArray();
-		  List<String> ret = new LinkedList<>();	
-		  backtracking(word, ret, 0);
-		  return ret;
+	  List<String> ret = new LinkedList<>();
+	  backtracking(word, ret, 0);
+	  return ret;
     }
     
     public void backtracking(char[] arr, List<String> ret, int idx) {
