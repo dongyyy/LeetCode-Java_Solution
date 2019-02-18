@@ -2,7 +2,8 @@
 //	3: 1,2,3 min=1
 //	2: 1,2 min=1
 //	1: 1 min=1
-	
+
+// 	2차풀이	
 	class MinStack {
 		
 		class Node{
@@ -42,3 +43,60 @@
 	    	return stack.peek().min;
 	    }
 	}
+
+
+
+
+
+
+
+
+
+
+//1차 풀이
+//이 경우, 가장 작은 수가 담겨 있는 노드를 stack에서 pop 한 이후에도 maxMin에 담겨 있는 가장 작은 수가 갱신이 안되어 오류 발생
+
+	static class Ob {
+		int num;
+		int min;
+		Ob(int num, int min){
+			this.num = num;
+			this.min = min;
+		}
+	}
+	
+	static class MinStack {
+
+		Stack<Ob> stack;
+		int maxMin;
+		
+	    /** initialize your data structure here. */
+	    public MinStack() {
+	        stack = new Stack<>();
+	        maxMin = Integer.MAX_VALUE;
+	    }
+	    
+	    public void push(int x) {
+    		if(x < maxMin) {
+    			maxMin = x;
+    		}
+    		Ob ob = new Ob(x, maxMin);
+            stack.push(ob);
+		}
+	
+	    
+	    
+	    public void pop() {
+	    	stack.pop();
+	    }
+	    
+	    public int top() {
+	    	return stack.peek().num;
+	    }
+	    
+	    public int getMin() {
+	    	return stack.peek().min;
+	    }
+	
+	}
+
