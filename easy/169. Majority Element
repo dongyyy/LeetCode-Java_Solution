@@ -1,0 +1,36 @@
+//	1. HashMap<Integer, Integer> // label, count
+//	시간: O(n)
+//	공간: O(n)
+//	
+//	2. 이중 for loop
+//	등장하는 원소마다 등장한 카운트를 체크하고 가장 많이 득표한 것을 업데이트
+//	시간: O(n^2)
+//	공간: O(1)
+//	
+//	3. 과반수 득표 알고리
+//	시간: O(n)
+//	공간: O(1)
+//	
+//	x = null, cnt = 0
+//	for each element a;
+//			if(cnt == 0) x=a, cnt++;
+//			else if(x == a) cnt++;
+//			else cnt --;
+//	루프 종료 후 다음  중 하나는 참
+//	- 과반수 득표가 존재하지 않음
+//	- 과반수 득표는 x
+
+	public int majorityElement(int[] nums) {
+		int x = 0;
+		int cnt = 0;
+		for (Integer num : nums) {
+			if (cnt == 0) {
+				x = num;
+				cnt++;
+			} else if (x == num)
+				cnt++;
+			else
+				cnt--;
+		}
+		return x;
+	}
