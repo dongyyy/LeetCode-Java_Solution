@@ -1,0 +1,50 @@
+// assumption
+	// next nodes  : 1 -> 2 -> 3
+	// random nodes: 1 -> 3
+	
+	// cur가 null이 아닌지 확인
+		// cur가 null이 아니라면 next가 null이 아닌지 확인
+			// null이 아니면 map에 2가 있는지 확인
+				// 없다면 만들어서 맵에 넣고 카피
+				// 있다면 map에서 꺼내서 카피
+		// rendom가 null이 아닌지 확인
+			// null이 아니면 map에 3이 있는지 확인
+				// 없다면 만들어서 맵에 넣고 카피
+				// 있다면 map에서 꺼내서 카피
+		// cur = cur.next
+		// head = head.next
+
+	// 사용할 자료구조
+	// hashmap
+
+	public class Solution {
+		public RandomListNode copyRandomList(RandomListNode head) {
+			if (head == null)
+				return null;
+			Map<RandomListNode, RandomListNode> map = new HashMap<>();
+			RandomListNode newHead = new RandomListNode(head.label);
+			RandomListNode cur = newHead;
+			map.put(head, newHead);
+
+			while (head != null) {
+				if (head.next != null) {
+					if (!map.containsKey(head.next)) {
+						map.put(head.next, new RandomListNode(head.next.label));
+					}
+					cur.next = map.get(head.next);
+				}
+
+				if (head.random != null) {
+					if (!map.containsKey(head.random)) {
+						map.put(head.random, new RandomListNode(head.random.label));
+					}
+					cur.random = map.get(head.random);
+				}
+
+				head = head.next;
+				cur = cur.next;
+			}
+
+			return newHead;
+		}
+	}
