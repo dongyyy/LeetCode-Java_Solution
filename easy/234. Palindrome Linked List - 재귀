@@ -1,0 +1,46 @@
+// 1.Using stack 
+// O(n) time and O(n) space;
+
+class Solution {
+       static public boolean isPalindrome(ListNode head) {
+		   if(head == null) return true;
+		   
+	    	ListNode cur = head;
+	    	Stack<Integer> stack  = new Stack<>();
+	    	
+	    	while(cur != null) {
+	    		stack.push(cur.val);
+	    		cur = cur.next;
+	    	}
+	    	
+	        while(head !=null && !stack.isEmpty()){
+	            if(head.val == stack.pop()){
+	                head = head.next;
+	            }else{
+	                return false;
+	            }
+	        }
+	           return true; 
+	    }
+}
+
+
+
+// 2.Using reculsivw
+// O(n) time and O(1) space;
+
+
+    boolean check = true;
+    public boolean isPalindrome(ListNode h) {
+        if (h == null || h.next == null) return true;
+        isPalindrome(h,h);
+        return check;
+    }
+    
+    public ListNode isPalindrome(ListNode c, ListNode h) {
+        if (c == null) return h;
+        
+        h = isPalindrome(c.next,h);
+        check = check && c.val == h.val;
+        return h.next;
+    }
