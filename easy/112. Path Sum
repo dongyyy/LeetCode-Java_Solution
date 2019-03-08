@@ -1,0 +1,24 @@
+
+// 간단한 재귀 문제였다.
+// -= 을 =- 로 실수 했다.
+// 명심하자 =- 은 마이너스 값을 변수에 초기화 할 때 쓰는 것이다.
+
+class Solution {
+	public boolean hasPathSum(TreeNode root, int sum) {
+		if(root == null) {
+			return false;
+		}
+		
+		sum -= root.val;
+		
+		if (root.right == null && root.left == null) {
+			if (sum == 0) {
+				return true;
+			}
+		}
+		
+		if (hasPathSum(root.left, sum) || hasPathSum(root.right, sum)) return true;
+		
+		return false;
+	}
+}
