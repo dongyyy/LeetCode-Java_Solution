@@ -17,8 +17,6 @@ class Solution {
 			}
 		}
 		
-		if (hasPathSum(root.left, sum) || hasPathSum(root.right, sum)) return true;
-		
-		return false;
+		return hasPathSum(root.left, sum) || hasPathSum(root.right, sum);
 	}
 }
